@@ -5,7 +5,7 @@ const port = 3000 //port
 //route/
 app.get("/",(req,res) =>{
     //res.send("hello");
-    res.sendFile(__dirname + "/about.html");
+    res.sendFile(__dirname + "/.html");
 });
 
 //route/about
