@@ -1,9 +1,13 @@
 const express = require("express")// import modul express
 const app = express()//isisalisasi exprezs
+const expressLayout = require("express-ejs-layouts");//impor modul express-ejs-layouts
 const port = 3000 //port
 
+app.set("views", __dirname + "/views");  //biar bisa diakses di vercel
 app.set('view engine','ejs');//supaya ejs nya dikenali 
 
+app.use(expressLayout);
+app.use(express.static('public'));
 
 //route/
 app.get("/",(req,res) =>{
@@ -21,20 +25,20 @@ app.get("/",(req,res) =>{
         },
     ];
 
-    res.render('index',{title: 'Halaman Home',berita});
+    res.render('index',{title: 'Halaman Home',berita,layout:'main'});
 });
 
 //route/about
 app.get("/about",(req,res) => {
     //res.send("About us");
     //res.sendFile(__dirname + "/about.html");
-    res.render('about')
+    res.render('about',{title: 'About us',layout: 'main'})
 });
 //route/contact
 app.get("/contact",(req,res) => {
     //res.send("Contact Us");
    // res.sendFile(__dirname + "/contact.html");
-    res.render('contact')
+    res.render('contact',{title: 'Contact',layout: 'main'})
 });
 //route/mahasiswa
 app.get("/mahasiswa",(req,res) => {
@@ -95,7 +99,7 @@ app.get("/prodi",(req,res) => {
             singkatan:"AK"
         },
     ];
-    res.render('prodi',{title: 'Halaman Home',prodi});
+    res.render('prodi',{title: 'Halaman Home',prodi,layout:'main'});
 });
 //handle route
 app.use("/",(req,res)=>{
