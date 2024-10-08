@@ -1,0 +1,23 @@
+<h1>Tabel Prodi</h1>
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Prodi</th>
+                <th scope="col">Singkatan</th>
+                <th scope="col">Fakultas</th>
+    
+              </tr>
+            </thead>
+            <tbody>
+                <% prodi.forEach(data => { %>
+                <tr>
+                <td> <%= data.namaprodi %> </td>
+                <td> <%= data.fakultas %> </td>
+                <td><%= data.singkatan %></td>
+            </tr>
+                <% }) %>
+                    
+              
+            </tbody>
+          </table>
