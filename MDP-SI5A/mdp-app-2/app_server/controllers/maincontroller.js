@@ -18,6 +18,9 @@ const about =(req,res) =>{
 const contact =(req,res) => {
       res.render('contact',{title: 'Contact',layout: 'main'});
 }
+const mahasiswa =(req,res) => {
+    res.render('mahasiswa',{title: 'mahasiswa',layout: 'main'});
+}
 // const prodi =(req,res) => {
    
 //     const prodi =[
@@ -55,4 +58,4 @@ const contact =(req,res) => {
 //         res.render('prodi',{title: 'Halaman Home',prodi,layout:'main'});
 //         };
     
-module.exports = {index,about,contact}
+module.exports = {index,about,contact,mahasiswa}

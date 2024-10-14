@@ -1,0 +1,72 @@
+<div class="container">
+    <h2>Data Mahasiswa</h2>
+    <form>
+      <div class="mb-3">
+        <label for="nama" class="form-label">Nama</label>
+        <input type="text" class="form-control" id="nama" />
+      </div>
+      <div class="mb-3">
+        <label for="npm" class="form-label">NPM</label>
+        <input type="text" class="form-control" id="npm" />
+      </div>
+
+
+      <button type="button" class="btn btn-primary" id="simpan">
+        Submit
+      </button>
+    </form>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">NPM</th>
+          <th scope="col">NAMA</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="main.js"></script>
+</body>
+<script>
+document.getElementById("simpan").addEventListener(
+  "click",
+  function () {
+    let nama = document.getElementById("nama").value;
+    let npm = document.getElementById("npm").value;
+    let mhs = { nama: nama, npm: npm };
+    let listmhs = [];
+    if (localStorage.getItem("mhs")) {
+      listmhs = JSON.parse(localStorage.getItem("mhs"));
+      listmhs.push(mhs);
+    } else {
+      listmhs.push(mhs);
+    }
+    localStorage.setItem("mhs", JSON.stringify(listmhs));
+    let data = "";
+    for (const [idx, dt] of listmhs.entries()) {
+      data +=
+        "<tr>" +
+        "<th scope='row'>" +
+        (idx + 1) +
+        "</th>" +
+        "<td>" +
+        dt.npm +
+        "</td>" +
+        "<td>" +
+        dt.nama +
+        "</td>" +
+        "</tr>";
+    }
+    document.getElementById("data").innerHTML = data;
+  },
+  true
+);
+</script>

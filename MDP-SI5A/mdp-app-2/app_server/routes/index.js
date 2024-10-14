@@ -10,6 +10,7 @@ const maincontroller = require('../controllers/maincontroller')
 router.get('/',maincontroller.index)
 router.get('/about',maincontroller.about)
 router.get('/contact',maincontroller.contact)
+router.get('/mahasiswa',maincontroller.mahasiswa)
 
 // /* GET home page. */
 // router.get('/', function(req, res, next) {
